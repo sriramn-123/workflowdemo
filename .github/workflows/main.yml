@@ -13,7 +13,7 @@ jobs:
       - name: script
         run: |
             docker build -t app .
-            echo ${{secrets.DOCKER_SECRET}}  | docker login -u ${{secrets.DOCKER_USER}} --stdin-password
+            echo ${{secrets.DOCKER_SECRET}}  | docker login -u ${{secrets.DOCKER_USER}} --password-stdin
             docker tag app q0w0e0r0t0y0/workflow
             docker push q0w0e0r0t0y0/workflow
           
