@@ -1,0 +1,19 @@
+name: CI
+on:
+  push:
+    branches: [ "sriram" ]
+  pull_request:
+    branches: [ "sriram" ]
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: script
+        run: |
+            docker build -t app .
+            docker login -u q0w0e0r0t0y0 -p dckr_pat_M9HSY_GFSOLwswS_JZsFvDnggNQ
+            docker tag app q0w0e0r0t0y0/workflow
+            docker push q0w0e0r0t0y0/workflow
+          
